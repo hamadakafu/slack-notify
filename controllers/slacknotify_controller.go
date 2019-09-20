@@ -50,6 +50,13 @@ func ignoreNotFound(err error) error {
 	return err
 }
 
+func ignoreAlreadyExists(err error) error {
+	if apierrs.IsAlreadyExists(err) {
+		return nil
+	}
+	return err
+}
+
 func (r *SlackNotifyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	ctx := context.Background()
 	log := r.Log.WithValues("slacknotify", req.NamespacedName)
@@ -133,7 +140,7 @@ func (r *SlackNotifyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 		return ctrl.Result{}, nil
 	}
 
-	if err := r.Create(ctx, job); err != nil {
+	if err := r.Create(ctx, job); ignoreAlreadyExists(err) != nil {
 		log.Error(err, "unable to create Job for SlackNotify", "job", job)
 		return ctrl.Result{}, err
 	}

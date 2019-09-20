@@ -59,6 +59,8 @@ func main() {
 	if err != nil {
 		setupLog.Error(err, "unable to start manager")
 		os.Exit(1)
+	} else {
+		setupLog.Info("ctrl.NewManger done")
 	}
 
 	if err = (&controllers.SlackNotifyReconciler{
@@ -68,6 +70,8 @@ func main() {
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "SlackNotify")
 		os.Exit(1)
+	} else {
+		setupLog.Info("slackNotifyReconciler.SetupWithManager")
 	}
 	// +kubebuilder:scaffold:builder
 

@@ -30,14 +30,15 @@ type SlackNotifyStatus struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:printcolumn:name=MESSAGE,priority=1,type=string,JSONPath=`.spec.message`
+// +kubebuilder:printcolumn:name=SLACK_WEBHOOK,priority=1,type=string,JSONPath=`.spec.slack_webhook`
 
 // SlackNotify is the Schema for the slacknotifies API
 type SlackNotify struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-
-	Spec   SlackNotifySpec   `json:"spec,omitempty"`
-	Status SlackNotifyStatus `json:"status,omitempty"`
+	Spec              SlackNotifySpec   `json:"spec,omitempty"`
+	Status            SlackNotifyStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true

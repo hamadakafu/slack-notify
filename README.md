@@ -28,3 +28,4 @@ kubectl apply -f example/sample-slack-notify.yaml
 
 # 備考
 ## テスト実行すると失敗するのでスキップしている
+## JSONPATHではなくJSONPath kubebuilder のアノテーション

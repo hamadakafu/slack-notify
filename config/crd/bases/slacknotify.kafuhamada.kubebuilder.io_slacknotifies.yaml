@@ -6,11 +6,21 @@ metadata:
   creationTimestamp: null
   name: slacknotifies.slacknotify.kafuhamada.kubebuilder.io
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .spec.message
+    name: MESSAGE
+    priority: 1
+    type: string
+  - JSONPath: .spec.slack_webhook
+    name: SLACK_WEBHOOK
+    priority: 1
+    type: string
   group: slacknotify.kafuhamada.kubebuilder.io
   names:
     kind: SlackNotify
     plural: slacknotifies
   scope: ""
+  subresources: {}
   validation:
     openAPIV3Schema:
       description: SlackNotify is the Schema for the slacknotifies API
