@@ -1,0 +1,7 @@
+apiVersion: slacknotify.kafuhamada.kubebuilder.io/v1
+kind: SlackNotify
+metadata:
+  name: slacknotify-sample
+spec:
+  # Add fields here
+  foo: bar

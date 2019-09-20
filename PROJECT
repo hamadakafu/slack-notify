@@ -1,0 +1,7 @@
+version: "2"
+domain: kafuhamada.kubebuilder.io
+repo: github.com/hamadakafu/slack-notify
+resources:
+- group: slacknotify
+  version: v1
+  kind: SlackNotify

@@ -1,0 +1,7 @@
+apiVersion: slacknotify.kafuhamada.kubebuilder.io/v1
+kind: SlackNotify
+metadata:
+  name: slacknotify-sample
+spec:
+  message: "Hello from slack notify!"
+  slack_webhook: "https://hooks.slack.com/services/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"
